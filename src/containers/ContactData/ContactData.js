@@ -52,7 +52,7 @@ class ContactData extends Component{
             deliveryMethod: {
                 elementType: 'select',
                 elementConfig: {
-                    oprions:[
+                    options:[
                         {value: 'fastest', displayValue: 'Fastest'},
                         {value: 'cheapest', displayValue: 'Cheapest'}
                     ],
