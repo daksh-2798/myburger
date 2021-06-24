@@ -22,7 +22,7 @@ const order = (props) =>{
             border: '1px solid white',
             backgroundColor: 'rgba(255, 99, 71, 0.5)'
         }
-        }>{ig.name} : ({ig.amount})</span>
+        }>{ig.name} : <span style={{ fontWeight:'bold' }}> {ig.amount}</span></span>
     })
     return(
     <div className={styles.Order}>
