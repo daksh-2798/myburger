@@ -14,7 +14,7 @@
 }
 
 .NavigationItem a:hover,
-.NavigationItem a:active
+.NavigationItem a:active,
 .NavigationItem a.active{
     color: lightseagreen;
 }
