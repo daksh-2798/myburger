@@ -20,7 +20,7 @@ const order = (props) =>{
             margin:'0 8px',
             padding: '5px',
             border: '1px solid white',
-            backgroundColor: 'rgba(255, 99, 71, 0.5)'
+            backgroundColor: 'rgba(248, 237, 226)'
         }
         }>{ig.name} : <span style={{ fontWeight:'bold' }}> {ig.amount}</span></span>
     })
