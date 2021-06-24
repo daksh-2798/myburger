@@ -107,9 +107,9 @@ class BurgerBuilder extends Component{
         //     }
         // }
         
-        // axios.post('/orders.json',order).then(
-        //     response => {
-        //         this.setState({ loading : true,purchasing:false });
+        //axios.post('/orders.json',order).then(
+            // response => {
+          //       this.setState({ loading : true,purchasing:false });
         //     }).catch(error => this.setState({ loading : true,purchasing:false }));
             //alert('You Continue!!');
             const queryParams = [];
