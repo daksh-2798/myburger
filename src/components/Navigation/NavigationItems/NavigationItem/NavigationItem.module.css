@@ -38,7 +38,7 @@
     .NavigationItem a:hover,
     .NavigationItem a:active
     .NavigationItem a.active{
-        color: white;
+        color: lightseagreen;
         border-bottom: 4px solid lightskyblue;
         background-color: sienna;
     }
