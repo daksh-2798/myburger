@@ -103,7 +103,7 @@ class ContactData extends Component{
             isValid = value.trim() !== '' && isValid;
         }
         if(rules.exactLength){
-            isValid = value.length == rules.exactLength && isValid;
+            isValid = value.length === rules.exactLength && isValid;
         }
         return isValid;
     }

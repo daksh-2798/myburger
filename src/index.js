@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
-import reducer from './store/reducer';
+import burgerBuilder from './store/reducer/burgerBuilder';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
-const store = createStore(reducer);
+const store = createStore(burgerBuilder, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const app = (
   <Provider store={store}>
