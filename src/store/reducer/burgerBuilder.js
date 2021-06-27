@@ -16,8 +16,6 @@ const INGREDIENT_PRICE = {
 const reducer = (state = initialState,action) => {
 
     switch(action.type){
-        
-
         case actionTypes.ADD_INGREDIENT:
             return{
                 ...state,
@@ -45,7 +43,8 @@ const reducer = (state = initialState,action) => {
                     meat : action.ingredient.meat,
                     bacon : action.ingredient.bacon,
                 }, 
-                error : false
+                error : false,
+                totalPrice: 45
             }
         case actionTypes.FETCH_INGREDIENT_FAILED:
             return{

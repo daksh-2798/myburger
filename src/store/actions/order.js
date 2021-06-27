@@ -29,11 +29,17 @@ export const purchaseOrder = (orderData) => {
         axios.post('/orders.json',orderData).then(
             response => {
                 console.log(response.data);
-                dispatch(purchaseOrderSuccess(response.data,orderData));
+                dispatch(purchaseOrderSuccess(response.data.name,orderData));
             }).catch(error => {
                 dispatch(purchaseOrderFail(error));
             });
     }
+}
+
+export const purchaseInit = () => {
+    return{
+        type : actionTypes.PURCHASE_INIT
+    };
 }
 // return dispatch => {
 //     dispatch( purchaseBurgerStart() );
