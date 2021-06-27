@@ -5,7 +5,7 @@ import axios from '../../axio-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Input from '../../components/UI/Input/Input';
 import {connect} from 'react-redux';
-import actions from '../../store/actions/index';
+import * as orderactions from '../../store/actions/index';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class ContactData extends Component{
@@ -92,7 +92,7 @@ class ContactData extends Component{
                 valid:true
             }
        },
-        loading: false,
+        
         formIsValid : false
     }
 
@@ -183,7 +183,7 @@ class ContactData extends Component{
                     <Button disabled={!this.state.formIsValid} btnType="Success">Order</Button>
                 </form>
         );
-        if(this.state.loading){
+        if(this.props.loading){
             form = <Spinner/>;
         }
 
@@ -199,12 +199,16 @@ class ContactData extends Component{
 const mapStateToProps = state =>{
     return{
         ing : state.ingredient,
-        price : state.totalPrice
+        price : state.totalPrice,
+        loading : state.loading
     }
 }
 
 const mapDispatchToProps = dispatch =>{
-    onOrderBurger : (orderData) => dispatch(actions.purchaseOrderStart(orderData))
+    return{
+    onOrderBurger : (orderData) => dispatch(orderactions.purchaseOrder(orderData))
+    }
 }
 
-export default connect(mapStateToProps)(withErrorHandler(ContactData,axios));
+
+export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(ContactData,axios));
