@@ -18,7 +18,7 @@ class App extends Component{
             <Route path="/auth" exact component={Auth}/>
             <Route path="/logout" exact component={LogOut}/>
             <Route path="/orders" exact component={Orders}/>
-            <Route path="/checkout" component={Checkout}/>
+            <Route path="/checkout" exact component={Checkout}/>
           </Switch>
         </Layout>
       </div>
