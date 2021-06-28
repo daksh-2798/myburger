@@ -6,6 +6,7 @@ import Checkout from './containers/Checkout/Checkout';
 import {Route ,Switch} from 'react-router-dom';
 import Orders from './containers/Orders/Orders';
 import Auth from './containers/Auth/Auth';
+import LogOut from './containers/Auth/LogOut/LogOut';
 
 class App extends Component{
   render(){
@@ -15,6 +16,7 @@ class App extends Component{
           <Switch>
             <Route path="/" exact component={BurgerBuilder}/>
             <Route path="/auth" exact component={Auth}/>
+            <Route path="/logout" exact component={LogOut}/>
             <Route path="/orders" exact component={Orders}/>
             <Route path="/checkout" component={Checkout}/>
           </Switch>
