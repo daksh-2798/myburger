@@ -6,7 +6,9 @@ const navigationItems = (props) =>(
     <ul className={styles.NavigationItems}>
         <NavigationItem link="/" exact>Burger Builder</NavigationItem>
         <NavigationItem link="/orders">Orders</NavigationItem>
-        <NavigationItem link="/auth">SignUp/SignIn</NavigationItem>
+        {!props.isAuthenticated 
+        ? <NavigationItem link="/auth">SignUp/SignIn</NavigationItem>
+        : <NavigationItem link="/logout">LogOut</NavigationItem>}
     </ul>
 );
 
