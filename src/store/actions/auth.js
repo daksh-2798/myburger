@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
+
 export const authStart = () => {
     return {
         type : actionTypes.AUTH_START
@@ -29,7 +30,8 @@ export const auth = (email , password) => {
             password : password,
             returnSecureToken : true
         }
-        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCjLQmaQUS4L5zu2O_KxIXcFf7XLTZP87A',
+        
+        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+process.env.REACT_APP_GOOGLE_API_KEY,
         authData).then(response => {
             console.log(response);
             dispatch(authSuccess(response.data));
