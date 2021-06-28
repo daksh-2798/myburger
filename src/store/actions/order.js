@@ -23,10 +23,10 @@ export const purchaseOrderStart = () => {
     }
 }
 
-export const purchaseOrder = (orderData) => {
+export const purchaseOrder = (orderData,token) => {
     return dispatch => {
         dispatch(purchaseOrderStart());
-        axios.post('/orders.json',orderData).then(
+        axios.post('/orders.json?auth='+token,orderData).then(
             response => {
                 console.log(response.data);
                 dispatch(purchaseOrderSuccess(response.data.name,orderData));
@@ -62,10 +62,10 @@ export const fetchOrderStart = () => {
     };
 };
 
-export const fetchOrder = () => {
+export const fetchOrder = (token) => {
     return dispatch =>{
         dispatch(fetchOrderStart());
-        axios.get('./orders.json').then(
+        axios.get('./orders.json?auth='+token).then(
             res => {
                 const fetchedOrders = [];
                 for(let key in res.data){

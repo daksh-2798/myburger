@@ -16,7 +16,7 @@ class Orders extends Component{
     // }
 
     componentDidMount () {
-        this.props.onFetchOrder();
+        this.props.onFetchOrder(this.props.token);
         // axios.get('./orders.json').then(
         //     res => {
         //         const fetchedOrders = [];
@@ -49,13 +49,14 @@ class Orders extends Component{
 const mapStateToProps = state => {
     return{
         order: state.order.order,
-        loading : state.order.loading
+        loading : state.order.loading,
+        token : state.auth.token
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return{
-        onFetchOrder: () => dispatch(actions.fetchOrder())
+        onFetchOrder: (token) => dispatch(actions.fetchOrder(token))
     };
 }
 export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(Orders,axios));
