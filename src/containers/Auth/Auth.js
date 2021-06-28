@@ -4,6 +4,7 @@
  import styles from '../Auth/Auth.module.css';
  import * as actions from '../../store/actions/index';
  import {connect} from 'react-redux';
+ import Spinner from '../../components/UI/Spinner/Spinner';
  
  class Auth extends Component{
     state = {
@@ -103,7 +104,7 @@
             })
         }
 
-        const form = formElementArray.map(formElement => (
+        let form = this.props.loading ? <Spinner/> : formElementArray.map(formElement => (
             <Input
             key={formElement.id} 
             elementType={formElement.config.elementType}
@@ -113,19 +114,28 @@
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
             changed={(event)=>{this.inputChangedHandler(event,formElement.id)}} />));
-
+        //let errorMessage = null;
+        let errorMessage = this.props.error ? (<p style={{color:'red'}}>{this.props.error.message}</p>) : null;        
         return(
             <div className={styles.Auth}>
+                {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     {form}
                     <Button btnType="Success">SUBMIT</Button>
-                    <Button
+                </form>
+                <Button
                     clicked = {this.switchAuthModeHandler}
                     btnType="Danger">Swith To {this.state.isSignUp ? 'SIGNIN' : 'SIGNUP'}</Button>
-                </form>
             </div>
         );
     }
+ }
+
+ const mapStateToProps = state => {
+     return {
+         loading : state.auth.loading,
+         error : state.auth.error
+     }
  }
 
  const mapDispatchToProps = dispatch => {
@@ -134,4 +144,4 @@
     }
 }
 
- export default connect(null,mapDispatchToProps)(Auth);
+ export default connect(mapStateToProps,mapDispatchToProps)(Auth);
