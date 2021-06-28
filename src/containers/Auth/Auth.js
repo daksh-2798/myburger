@@ -36,7 +36,8 @@
             valid:false,
             touched:false
         }
-    }
+    },
+        isSignUp : true
     }
     checkValidity(value, rules) {
         let isValid = true;
@@ -72,7 +73,7 @@
 
     submitHandler = (event) => {
         event.preventDefault();
-        this.props.onAuth(this.state.controls.emailid.value,this.state.controls.password.value);
+        this.props.onAuth(this.state.controls.emailid.value,this.state.controls.password.value,this.state.isSignUp);
     }
 
     inputChangedHandler = (event , controlName) => {
@@ -86,6 +87,12 @@
             }
         }
         this.setState({controls:updatedControls});
+    }
+
+    switchAuthModeHandler = () => {
+        this.setState(prevState => {
+            return {isSignUp : !prevState.isSignUp}
+        })
     }
     render(){
         const formElementArray = [];
@@ -112,6 +119,9 @@
                 <form onSubmit={this.submitHandler}>
                     {form}
                     <Button btnType="Success">SUBMIT</Button>
+                    <Button
+                    clicked = {this.switchAuthModeHandler}
+                    btnType="Danger">Swith To {this.state.isSignUp ? 'SIGNIN' : 'SIGNUP'}</Button>
                 </form>
             </div>
         );
@@ -120,7 +130,7 @@
 
  const mapDispatchToProps = dispatch => {
      return{
-     onAuth : (email,password) => dispatch(actions.auth(email,password))
+     onAuth : (email,password,isSignUp) => dispatch(actions.auth(email,password,isSignUp))
     }
 }
 
