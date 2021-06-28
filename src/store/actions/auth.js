@@ -30,8 +30,9 @@ export const auth = (email , password) => {
             password : password,
             returnSecureToken : true
         }
-        
-        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+process.env.REACT_APP_GOOGLE_API_KEY,
+        const key = process.env.REACT_APP_API_KEY;
+        console.log(process.env);
+        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+key,
         authData).then(response => {
             console.log(response);
             dispatch(authSuccess(response.data));
