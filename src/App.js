@@ -9,6 +9,19 @@ import Auth from './containers/Auth/Auth';
 import LogOut from './containers/Auth/LogOut/LogOut';
 import {connect} from 'react-redux';
 import * as actions from './store/actions/index';
+import asyncComponent from './hoc/asyncComponent/asyncComponent';
+
+const asyncCheckOut = asyncComponent(() => {
+  return import('./containers/Checkout/Checkout');
+});
+
+const asyncOrders = asyncComponent(() => {
+  return import('./containers/Orders/Orders');
+});
+
+const asyncAuth = asyncComponent(() => {
+  return import('./containers/Auth/Auth');
+});
 
 class App extends Component{
 
@@ -21,7 +34,7 @@ class App extends Component{
     let routes = (
       <Switch>
         <Route path="/" exact component={BurgerBuilder}/>
-        <Route path="/auth" exact component={Auth}/>
+        <Route path="/auth" exact component={asyncAuth}/>
         <Redirect to="/" />
       </Switch>
     );
@@ -31,9 +44,9 @@ class App extends Component{
       <Switch>
             <Route path="/" exact component={BurgerBuilder}/>
             <Route path="/logout" exact component={LogOut}/>
-            <Route path="/orders" exact component={Orders}/>
-            <Route path="/auth" exact component={Auth}/>
-            <Route path="/checkout"  component={Checkout}/>
+            <Route path="/orders" exact component={asyncOrders}/>
+            <Route path="/auth" exact component={asyncAuth}/>
+            <Route path="/checkout"  component={asyncCheckOut}/>
             <Redirect to="/" />
           </Switch>
           );    
