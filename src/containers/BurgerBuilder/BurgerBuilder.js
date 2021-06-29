@@ -17,7 +17,7 @@ import * as actions from '../../store/actions/index';
 //     bacon : 45
 // }  moved to reducer
 
-class BurgerBuilder extends Component{
+export class BurgerBuilder extends Component{
 
     state = {
        // ingredient: null,     moved to reducer
