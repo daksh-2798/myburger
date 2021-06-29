@@ -124,7 +124,7 @@ class ContactData extends Component{
             orderData : formData,
             userId : this.props.userId 
         }
-        console.log(order);
+       // console.log(order);
         this.props.onOrderBurger(order,this.props.token);
         // axios.post('/orders.json',order).then(
         //     response => {
@@ -148,7 +148,7 @@ class ContactData extends Component{
         for(let inputIdentifier in updatedOrderForm){
             formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
         }
-        console.log(formIsValid);
+        //console.log(formIsValid);
         this.setState({orderForm:updatedOrderForm,formIsValid:formIsValid});
     }
 

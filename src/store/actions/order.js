@@ -28,7 +28,7 @@ export const purchaseOrder = (orderData,token) => {
         dispatch(purchaseOrderStart());
         axios.post('/orders.json?auth='+token,orderData).then(
             response => {
-                console.log(response.data);
+                //console.log(response.data);
                 dispatch(purchaseOrderSuccess(response.data.name,orderData));
             }).catch(error => {
                 dispatch(purchaseOrderFail(error));
