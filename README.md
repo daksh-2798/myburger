@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Demo
+
+To view the project Demo :
+Open [https://my-burger-289de.web.app](https://my-burger-289de.web.app) to view it in the browser.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
